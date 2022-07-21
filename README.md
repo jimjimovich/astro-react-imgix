@@ -57,6 +57,20 @@
 
 <!-- prettier-ignore-end -->
 
+## Changes for Astro
+This repo only adds the ability to sign URLs with Astro (in the build process, not client side). If an IMGIX_SECURITY_TOKEN environment variable is set, then URLs will be signed.
+
+```
+--- a/src/constructUrl.js
++++ b/src/constructUrl.js
+@@ -147,6 +147,7 @@ function extractClientAndPathComponents(src) {
+     domain: domain,
+     useHTTPS: useHTTPS,
+     includeLibraryParam: false,
++    secureURLToken: import.meta.env.IMGIX_SECURITY_TOKEN,
+   });
+```
+
 ## Overview / Resources
 
 **Before you get started with react-imgix**, it's _highly recommended_ that you read Eric Portis' [seminal article on `srcset` and `sizes`](https://ericportis.com/posts/2014/srcset-sizes/). This article explains the history of responsive images in responsive design, why they're necessary, and how all these technologies work together to save bandwidth and provide a better experience for users. The primary goal of react-imgix is to make these tools easier for developers to implement, so having an understanding of how they work will significantly improve your react-imgix experience.

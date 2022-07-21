@@ -147,6 +147,7 @@ function extractClientAndPathComponents(src) {
     domain: domain,
     useHTTPS: useHTTPS,
     includeLibraryParam: false,
+    secureURLToken: import.meta.env.IMGIX_SECURITY_TOKEN,
   });
 
   return { client, pathComponents };
